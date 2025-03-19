@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-green-25: #b3c4b3;
+  --color-green-50: #c2d49f;
+  --color-green-100: #d2e7d6;
+  --color-green-150: #217c0e;
+  --color-green-200: #b4d8bc;
+  --color-green-300: #a3cfab;
+  --color-green-400: #5e9156;
+  --color-green-500: #30633a;
+  --color-green-600: #1c4523;
+
+  --color-yelow: #fcff04;
+
+  --color-light-green: #69c705;
+
+  --color-orange: #f86002;
+
+  --color-red: #f83a0e;
+
+  --color-cyan: #43c7dc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 12px;
+}
+
+svg {
+  cursor: pointer;
+}
+
+th {
+  font-weight: normal;
+}

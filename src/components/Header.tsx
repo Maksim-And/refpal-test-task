@@ -1,15 +1,15 @@
 import PlayIcon from "../assets/icons/PlayIcon";
-import Card from "./Card";
 import TeamCard from "./TeamCard";
 
 import transImage from "../assets/images/trans.png";
 import kuressaareImage from "../assets/images/kuressaare.png";
 import InfoIcon from "../assets/icons/InfoIcon";
 import StarIcon from "../assets/icons/StarIcon";
+import Card from "./ui/Card";
 
 const Header = () => {
   return (
-    <div className="flex flex-wrap md:flex-nowrap bg-green-600 p-3">
+    <div className="flex flex-wrap md:flex-nowrap bg-green-600 p-3 mx-[1px]">
       <section className="flex gap-x-2 items-center">
         <Card iconPosition="bottom">36</Card>
         <span className="text-white">09.11.24</span>

@@ -1,15 +1,21 @@
+import { cn } from "../../lib/utils";
+
 interface IIconProps {
+  color: string;
   width?: number;
   height?: number;
-  color: string;
+  className?: string;
 }
 
 const StarIcon: React.FC<IIconProps> = ({
   width = 24,
   height = 24,
   color = "#fff",
+  className,
 }) => (
-  <div className="flex items-center border-1 border-white w-6 h-6">
+  <div
+    className={cn("flex items-center border-1 border-white w-6 h-6", className)}
+  >
     <svg
       width={width}
       height={height}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Card from "./Card";
 import Statistics from "./Statistics";
 import { cn, setCardColor } from "../lib/utils";
 import PlayIcon from "../assets/icons/PlayIcon";
@@ -10,6 +9,7 @@ import kuressaareImage from "../assets/images/kuressaare.png";
 import RefereeDecisionIcons from "./RefereeDecisionIcons";
 import { CustomTooltip } from "./CustomTooltip";
 import PlusCicledIcon from "../assets/icons/PlusCicledIcon";
+import Card from "./ui/Card";
 
 const data = [
   {
@@ -30,6 +30,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: true,
       },
       {
         id: 14,
@@ -45,6 +46,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: true,
       },
       {
         id: 5,
@@ -60,6 +62,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: true,
       },
       {
         id: 6,
@@ -75,6 +78,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
     ],
   },
@@ -96,6 +100,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
       {
         id: 8,
@@ -111,6 +116,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
       {
         id: 9,
@@ -126,6 +132,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
     ],
   },
@@ -147,6 +154,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
       {
         id: 11,
@@ -162,6 +170,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
       {
         id: 12,
@@ -177,6 +186,7 @@ const data = [
         aa: 4,
         hk: 4,
         ko: 4,
+        hasMessage: false,
       },
     ],
   },
@@ -184,7 +194,7 @@ const data = [
 
 const IncidentTable = () => {
   const [expandedIncidentId, setExpandedIncidentId] = useState<number | null>(
-    null,
+    6,
   );
 
   const handleRowClick = (incidentId: number) => {
@@ -200,11 +210,11 @@ const IncidentTable = () => {
           <tr className="bg-green-500 font-normal">
             <th className="p-1 w-[5%] ">Minute</th>
             <th className="p-1 w-[5%]">Time</th>
-            <th className="p-1 w-[29%] flex flex-col">
+            <th className="p-1 w-[30%] flex flex-col">
               <span>Topic</span>
               <span>subtopic</span>
             </th>
-            <th className="p-1 w-[28%]">Offender</th>
+            <th className="p-1 w-[30%]">Offender</th>
             <th className="p-1 w-[5%] text-center">Decision by referee</th>
             <th className="p-1 w-[4%] text-center hidden md:table-cell">
               Official Mark
@@ -220,9 +230,9 @@ const IncidentTable = () => {
               H.K.
             </th>
             <th className="p-1 w-[4%] text-center hidden md:table-cell">
-              K.O.
+              K.&Ouml;.
             </th>
-            <th className="p-1 w-[4%]"></th>
+            <th className="p-1 w-[1%]"></th>
           </tr>
         </thead>
         <tbody>
@@ -243,7 +253,7 @@ const IncidentTable = () => {
                     className={cn(
                       "bg-white hover:bg-white/50 border-b border-green-25",
                       expandedIncidentId === incident.id &&
-                        "bg-green-200 hover:bg-green-200/60",
+                        "bg-green-300 hover:bg-green-300/60",
                     )}
                   >
                     <td className="p-1">
@@ -278,6 +288,7 @@ const IncidentTable = () => {
                     </td>
                     <td className="p-1 text-center hidden md:table-cell">
                       <Card
+                        hasMessage={incident.hasMessage}
                         border
                         className={cn(
                           "flex justify-center w-[32px] h-[24px] px-0",

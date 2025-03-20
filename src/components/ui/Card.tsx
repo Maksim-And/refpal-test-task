@@ -1,13 +1,21 @@
-import ArrowDownIcon from "../assets/icons/ArrowDown";
-import { cn } from "../lib/utils";
+import ArrowDownIcon from "../../assets/icons/ArrowDownIcon";
+import MessageIcon from "../../assets/icons/MessageIcon";
+import { cn } from "../../lib/utils";
 
 type CardProps = {
   children: React.ReactNode;
   iconPosition?: "bottom";
   className?: string;
   border?: boolean;
+  hasMessage?: boolean;
 };
-const Card = ({ children, iconPosition, className, border }: CardProps) => {
+const Card = ({
+  children,
+  iconPosition,
+  className,
+  border,
+  hasMessage,
+}: CardProps) => {
   return (
     <div className="relative flex flex-col items-center gap-y-1">
       <span
@@ -21,6 +29,11 @@ const Card = ({ children, iconPosition, className, border }: CardProps) => {
       </span>
 
       {iconPosition === "bottom" && <ArrowDownIcon className="" />}
+      {hasMessage && (
+        <div className="absolute right-[1px] -top-1">
+          <MessageIcon />
+        </div>
+      )}
     </div>
   );
 };

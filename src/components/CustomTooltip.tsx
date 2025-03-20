@@ -1,6 +1,6 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import Card from "./Card";
-import { cn, setCardColor } from "../lib/utils";
+import Marks from "./ui/Marks";
+import Card from "./ui/Card";
 
 export const CustomTooltip = ({ mark }: { mark: number }) => {
   return (
@@ -17,30 +17,18 @@ export const CustomTooltip = ({ mark }: { mark: number }) => {
             side="top"
             align="center"
           >
-            <div className="font-bold">Evaluations: 54</div>
-            <div className="flex items-center mt-1 border">
-              {[0, 1, 2, 3, 4, 5, 6].map((num) => (
-                <div
-                  key={num}
-                  className={cn(
-                    "w-7 h-6 text-center border-r last:border-r-0",
-                    setCardColor(num),
-                  )}
-                >
-                  {num}
-                </div>
-              ))}
-            </div>
+            <p className="font-bold">Evaluations: 54</p>
+            <Marks marksCount={7} />
             <div className="flex font-bold justify-end">
               {[2, 42, 9, 1].map((count, i) => (
-                <span key={i} className="text-center w-7 h-6">
+                <span key={i} className="text-center w-8 h-6">
                   {count}
                 </span>
               ))}
             </div>
-            <div className="text-[10px]">
+            <span className="text-[10px]">
               10% lowest & highest marks excluded
-            </div>
+            </span>
           </Tooltip.Content>
         </Tooltip.Portal>
       </Tooltip.Root>

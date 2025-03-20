@@ -1,7 +1,7 @@
 import CardIcon from "../assets/icons/CardIcon";
 import FlagIcon from "../assets/icons/FlagIcon";
 import ReplayIcon from "../assets/icons/ReplayIcon";
-import WhistleIcon from "../assets/icons/Whistle";
+import WhistleIcon from "../assets/icons/WhistleIcon";
 
 type RefereeDecisionIconsProps = {
   type: string;

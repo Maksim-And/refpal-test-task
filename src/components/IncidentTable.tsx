@@ -1,198 +1,22 @@
 import React, { useState } from "react";
-import Statistics from "./Statistics";
-import { cn, setCardColor } from "../lib/utils";
 import PlayIcon from "../assets/icons/PlayIcon";
-import TeamCard from "./TeamCard";
-
-import transImage from "../assets/images/trans.png";
-import kuressaareImage from "../assets/images/kuressaare.png";
-import RefereeDecisionIcons from "./RefereeDecisionIcons";
-import { CustomTooltip } from "./CustomTooltip";
 import PlusCicledIcon from "../assets/icons/PlusCicledIcon";
+import { cn, setCardColor } from "../lib/utils";
+import { IncidentTopic } from "../types";
+import { CustomTooltip } from "./CustomTooltip";
+import RefereeDecisionIcons from "./RefereeDecisionIcons";
+import Statistics from "./Statistics";
+import TeamCard from "./TeamCard";
 import Card from "./ui/Card";
 
-const data = [
-  {
-    id: 1,
-    topic: "Main Incidents",
-    incidents: [
-      {
-        id: 4,
-        minute: 73,
-        time: "9:34",
-        topic: "Ball out of play",
-        subtopic: "Pushing/pulling",
-        offender: { name: "Rolon", team: "Trans", image: transImage },
-        decision: "yellow-card",
-        officialMark: 0,
-        myMark: null,
-        communityMark: 4.1,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: true,
-      },
-      {
-        id: 14,
-        minute: null,
-        time: "9:34",
-        topic: "Ball out of play",
-        subtopic: "Pushing/pulling",
-        offender: { name: "Domov", team: "Kuressaare", image: kuressaareImage },
-        decision: "replay",
-        officialMark: 1,
-        myMark: null,
-        communityMark: 4.1,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: true,
-      },
-      {
-        id: 5,
-        minute: 90,
-        time: "12:06",
-        topic: "Severity",
-        subtopic: "Studs directed high",
-        offender: { name: "Kukhianidze", team: "Trans", image: transImage },
-        decision: "whistle",
-        officialMark: 3,
-        myMark: null,
-        communityMark: 2.8,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: true,
-      },
-      {
-        id: 6,
-        minute: null,
-        time: "",
-        topic: "2nd yellow",
-        subtopic: "Reckless",
-        offender: { name: "Kukhianidze", team: "Trans", image: transImage },
-        decision: "flag",
-        officialMark: 4,
-        myMark: null,
-        communityMark: 2.0,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-    ],
-  },
-  {
-    id: 2,
-    topic: "Learning points",
-    incidents: [
-      {
-        id: 7,
-        minute: 73,
-        time: "9:34",
-        topic: "Ball out of play",
-        subtopic: "Pushing/pulling",
-        offender: { name: "Rolon", team: "Trans", image: transImage },
-        decision: "yellow-card",
-        officialMark: 5,
-        myMark: null,
-        communityMark: 4.1,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-      {
-        id: 8,
-        minute: 90,
-        time: "12:06",
-        topic: "Severity",
-        subtopic: "Studs directed high",
-        offender: { name: "Kukhianidze", team: "Trans", image: transImage },
-        decision: "replay",
-        officialMark: 4,
-        myMark: null,
-        communityMark: 2.8,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-      {
-        id: 9,
-        minute: 90,
-        time: "",
-        topic: "2nd yellow",
-        subtopic: "Reckless",
-        offender: { name: "Kukhianidze", team: "Trans", image: transImage },
-        decision: "whistle",
-        officialMark: 3,
-        myMark: null,
-        communityMark: 2.0,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-    ],
-  },
-  {
-    id: 3,
-    topic: "For referee / statistics",
-    incidents: [
-      {
-        id: 10,
-        minute: 73,
-        time: "9:34",
-        topic: "Ball out of play",
-        subtopic: "Pushing/pulling",
-        offender: { name: "Rolon", team: "Trans", image: transImage },
-        decision: "flag",
-        officialMark: 6,
-        myMark: null,
-        communityMark: 4.1,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-      {
-        id: 11,
-        minute: 90,
-        time: "12:06",
-        topic: "Severity",
-        subtopic: "Studs directed high",
-        offender: { name: "Kukhianidze", team: "Trans", image: transImage },
-        decision: "flag",
-        officialMark: 6,
-        myMark: null,
-        communityMark: 2.8,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-      {
-        id: 12,
-        minute: 90,
-        time: "",
-        topic: "2nd yellow",
-        subtopic: "Reckless",
-        offender: { name: "Kukhianidze", team: "Trans", image: transImage },
-        decision: "whistle",
-        officialMark: 3,
-        myMark: null,
-        communityMark: 2.0,
-        aa: 4,
-        hk: 4,
-        ko: 4,
-        hasMessage: false,
-      },
-    ],
-  },
-];
+import kuressaareImage from "../assets/images/kuressaare.png";
+import transImage from "../assets/images/trans.png";
 
-const IncidentTable = () => {
+type IcidentTableProps = {
+  data: IncidentTopic[] | null;
+};
+
+const IncidentTable = ({ data }: IcidentTableProps) => {
   const [expandedIncidentId, setExpandedIncidentId] = useState<number | null>(
     6,
   );
@@ -236,7 +60,7 @@ const IncidentTable = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((topic) => (
+          {data?.map((topic) => (
             <React.Fragment key={topic.id}>
               <tr>
                 <td
@@ -277,7 +101,9 @@ const IncidentTable = () => {
                     <td className="p-1 leading-4">
                       <strong>{incident.offender.name}</strong> <br />{" "}
                       <TeamCard
-                        image={incident.offender.image}
+                        image={
+                          incident.offender.image ? transImage : kuressaareImage
+                        }
                         teamName={incident.offender.team}
                         textPosition="right"
                         className="text-black font-normal"
@@ -315,7 +141,9 @@ const IncidentTable = () => {
                       <PlusCicledIcon />
                     </td>
                   </tr>
-                  {expandedIncidentId === incident.id && <Statistics />}
+                  {expandedIncidentId === incident.id && (
+                    <Statistics playersStatistic={incident.playersStatistic} />
+                  )}
                 </React.Fragment>
               ))}
             </React.Fragment>

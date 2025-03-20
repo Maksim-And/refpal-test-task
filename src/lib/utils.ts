@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function setCardColor(value: number) {
+export function setCardColor(value: number | undefined) {
   const colors: Record<number, string> = {
     0: "bg-white",
     1: "bg-[#d7d5da]",
@@ -16,10 +16,10 @@ export function setCardColor(value: number) {
     6: "bg-[#f81603]",
   };
 
-  return colors[value] || "bg-white";
+  return colors[value || 0] || "bg-white";
 }
 
-export const setMarkColor = (value: number) => {
+export const setMarkColor = (value: number | undefined) => {
   const colors: Record<number, string> = {
     1: "bg-white",
     2: "bg-gradient-to-r from-[#fff] to-[#e56237]",
@@ -27,5 +27,5 @@ export const setMarkColor = (value: number) => {
     4: "bg-[#fc1104]",
   };
 
-  return colors[value] || "bg-white";
+  return colors[value || 1] || "bg-white";
 };

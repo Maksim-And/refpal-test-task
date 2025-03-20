@@ -1,20 +1,26 @@
 import ArrowLeftIcon from "../assets/icons/ArrowLeftIcon";
 import WhistleIcon from "../assets/icons/WhistleIcon";
-import { cn, setMarkColor } from "../lib/utils";
+import { cn, setCardColor, setMarkColor } from "../lib/utils";
 import Card from "./ui/Card";
 
 type IncidentCardProps = {
   playerName: string;
-  count: number;
+  details: "short" | "default";
+  countShort?: number;
+  countDefault?: number;
   description?: string;
   hasBackground?: boolean;
+  isNotAvailable?: boolean;
 };
 
 const IncidentCard = ({
   playerName,
-  count,
+  countShort,
+  countDefault,
+  details,
   description,
   hasBackground,
+  isNotAvailable,
 }: IncidentCardProps) => {
   return (
     <div
@@ -24,9 +30,25 @@ const IncidentCard = ({
       )}
     >
       <ArrowLeftIcon />
-      <Card className={cn(setMarkColor(count))} border>
-        {count}
+      <Card
+        className={cn(
+          details === "short"
+            ? setMarkColor(countShort)
+            : setCardColor(countDefault),
+        )}
+        border
+      >
+        {details === "short" ? countShort : countDefault}
       </Card>
+      {details === "default" && (
+        <div className="w-5 mt-[2px]">
+          {isNotAvailable && (
+            <Card border className="h-[16px] text-[10px]">
+              NO
+            </Card>
+          )}
+        </div>
+      )}
       <span className="font-bold">{playerName}</span>
       <div className="ml-auto">
         <WhistleIcon />

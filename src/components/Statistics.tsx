@@ -12,8 +12,23 @@ import Marks from "./ui/Marks";
 import Filters from "./Filters";
 import VideoSection from "./VideoSection";
 
-const Statistics = () => {
+type PlayerStatistic = {
+  playerName: string;
+  countShort: number;
+  countDefault: number;
+  description: string;
+  hasBackground: boolean;
+  isShort: boolean;
+  isNotAvailable: boolean;
+};
+
+type StatisticsProps = {
+  playersStatistic: PlayerStatistic[] | undefined | null;
+};
+
+const Statistics = ({ playersStatistic }: StatisticsProps) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [details, setDetails] = useState<"short" | "default">("default");
   const handleToggleFilter = () => {
     setIsFilterOpen((prev) => !prev);
   };
@@ -29,15 +44,28 @@ const Statistics = () => {
                 Official answer:
               </h2>
             </div>
-            <Marks hasMarker marksCount={7} />
-            <Checkbox />
-            <div className="flex gap-x-1 mt-1">
-              <span className="font-bold text-green-450">
-                VAR intervention:
-              </span>
-              <PlusSquared />
+            <div
+              onClick={() => setDetails("default")}
+              className={cn("p-1", details === "default" && "bg-green-300")}
+            >
+              <Marks hasMarker marksCount={7} />
+              <Checkbox />
+              <div className="flex gap-x-1 mt-1">
+                <span className="font-bold text-green-450">
+                  VAR intervention:
+                </span>
+                <PlusSquared />
+              </div>
             </div>
-            <div className="bg-green-300 p-1 mt-1 pb-3 relative">
+
+            <div
+              onClick={() => setDetails("short")}
+              className={cn(
+                "p-1 mt-1 pb-3 relative border-b border-b-transparent",
+                details === "short" && "bg-green-300",
+                details === "default" && "border-b border-b-green-300",
+              )}
+            >
               <div className="flex items-center mt-1 border w-fit">
                 {Array.from({ length: 4 }, (_, i) => i + 1).map((num) => (
                   <div
@@ -56,7 +84,7 @@ const Statistics = () => {
               </div>
               <Checkbox />
             </div>
-            <div className="flex gap-x-2 items-center mt-1 mb-1">
+            <div className="flex gap-x-2 items-center mb-3 mt-2">
               <span className="font-bold text-green-450">
                 Similar incident:
               </span>
@@ -83,29 +111,32 @@ const Statistics = () => {
             </div>
           </section>
           <section className="flex-1">
-            <IncidentCard playerName="Alev Ain" count={1} />
-            <IncidentCard
-              hasBackground
-              description="Samasel vlisil olukorda minek on vastase suhtes hoolimatu.
-                Teisest kollasest kaardist paastab tosisema kontalti puudumine."
-              playerName="Alev Ain"
-              count={2}
-            />
-            <IncidentCard hasBackground playerName="Alev Ain" count={3} />
-            <IncidentCard playerName="Alev Ain" count={4} />
-            <IncidentCard
-              count={1}
-              hasBackground
-              description="Samasel vlisil olukorda minek on vastase suhtes hoolimatu.
-                Teisest kollasest kaardist paastab tosisema kontalti puudumine."
-              playerName="Alev Ain"
-            />
-            <IncidentCard
-              count={1}
-              description="Samasel vlisil olukorda minek on vastase suhtes hoolimatu.
-                Teisest kollasest kaardist paastab tosisema kontalti puudumine."
-              playerName="Alev Ain"
-            />
+            {!playersStatistic && (
+              <p className="text-red font-bold">No statistics</p>
+            )}
+            {playersStatistic?.map((player, index) => {
+              const commonProps = {
+                playerName: player.playerName,
+                description: player.description,
+                hasBackground: player.hasBackground,
+                details: details,
+                isNotAvailable: player.isNotAvailable,
+              };
+
+              return details === "default" ? (
+                <IncidentCard
+                  {...commonProps}
+                  key={index}
+                  countDefault={player.countDefault}
+                />
+              ) : (
+                <IncidentCard
+                  {...commonProps}
+                  key={index}
+                  countShort={player.countShort}
+                />
+              );
+            })}
           </section>
         </div>
         <section>

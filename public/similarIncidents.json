@@ -1,194 +1,237 @@
 [
   {
-    "date": "06.10.24",
+    "date": "03.03.25",
     "team1": "Kuressaare",
     "team2": "Volossatov",
     "image": 1,
-    "playerName": "Epton",
-    "score": 1
+    "referee": "SALLA Mirjeta",
+    "scale": 1,
+    "season": "23",
+    "topic": "Severity",
+    "subtopic": "Studs directed high"
   },
   {
-    "date": "21.09.24",
+    "date": "04.03.25",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 2,
-    "playerName": "Kalju",
-    "score": 2
+    "referee": "SUBASHI Arlind",
+    "scale": 2,
+    "season": "23",
+    "topic": "Severity",
+    "subtopic": "Studs directed high"
   },
   {
     "date": "15.09.24",
     "team1": "Tammeka",
     "team2": "Patrikjevs",
     "image": 3,
-    "playerName": "Pedmanson",
-    "score": 3
+    "referee": "SUBASHI Arlind",
+    "scale": 3
   },
   {
     "date": "13.09.24",
     "team1": "Tammeka",
     "team2": "Pedmanson",
     "image": 4,
-    "playerName": "Ceesay",
-    "score": 4
+    "referee": "SALLA Mirjeta",
+    "scale": 4
   },
   {
     "date": "01.09.24",
     "team1": "Paide",
     "team2": "Ceesay",
     "image": 5,
-    "playerName": "Kask",
-    "score": 5
+    "referee": "SUBASHI Arlind",
+    "scale": 5,
+    "season": "23",
+    "topic": "Severity",
+    "subtopic": "Studs directed high"
   },
   {
     "date": "02.08.24",
     "team1": "Vaprus",
     "team2": "Kask",
     "image": 1,
-    "playerName": "Epton",
-    "score": 6
+    "referee": "SUBASHI Arlind",
+    "scale": 6
   },
   {
     "date": "27.07.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 2,
-    "playerName": "Vaprus",
-    "score": 4
+    "referee": "MANI Xhuljo",
+    "scale": 4
   },
   {
     "date": "27.07.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 3,
-    "playerName": "Vaprus",
-    "score": 5
+    "referee": "MANI Xhuljo",
+    "scale": 5
   },
   {
     "date": "06.10.24",
     "team1": "Kuressaare",
     "team2": "Volossatov",
     "image": 1,
-    "playerName": "Epton",
-    "score": 1
+    "referee": "SUBASHI Arlind",
+    "scale": 1,
+    "season": "23",
+    "topic": "Severity",
+    "subtopic": "Studs directed high"
   },
   {
     "date": "21.09.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 2,
-    "playerName": "Kalju",
-    "score": 2
+    "referee": "ZALLA Arber",
+    "scale": 2,
+    "season": "25",
+    "topic": "Priority"
   },
   {
     "date": "15.09.24",
     "team1": "Tammeka",
     "team2": "Patrikjevs",
     "image": 3,
-    "playerName": "Pedmanson",
-    "score": 3
+    "referee": "MANI Xhuljo",
+    "scale": 3,
+    "season": "23",
+    "topic": "Severity",
+    "subtopic": "Studs directed high"
   },
   {
     "date": "13.09.24",
     "team1": "Tammeka",
     "team2": "Pedmanson",
     "image": 1,
-    "playerName": "Ceesay",
-    "score": 4
+    "referee": "ZALLA Arber",
+    "scale": 4,
+    "season": "25",
+    "topic": "Priority"
   },
   {
     "date": "01.09.24",
     "team1": "Paide",
     "team2": "Ceesay",
     "image": 4,
-    "playerName": "Kask",
-    "score": 5
+    "referee": "MANI Xhuljo",
+    "scale": 5,
+    "topic": "Status"
   },
   {
     "date": "02.08.24",
     "team1": "Vaprus",
     "team2": "Kask",
     "image": 2,
-    "playerName": "Epton",
-    "score": 6
+    "referee": "ZALLA Arber",
+    "scale": 6,
+    "season": "25",
+    "topic": "Priority"
   },
   {
     "date": "27.07.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 2,
-    "playerName": "Vaprus",
-    "score": 4
+    "referee": "QOSE Marjus",
+    "scale": 4,
+    "topic": "Status"
   },
   {
     "date": "27.07.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 3,
-    "playerName": "Vaprus",
-    "score": 5
+    "referee": "MANI Xhuljo",
+    "scale": 5,
+    "season": "24",
+    "topic": "Priority"
   },
   {
     "date": "06.10.24",
     "team1": "Kuressaare",
     "team2": "Volossatov",
     "image": 1,
-    "playerName": "Epton",
-    "score": 1
+    "referee": "BURGU Erind",
+    "scale": 1,
+    "season": "24",
+    "topic": "Priority",
+    "subtopic": ""
   },
   {
     "date": "21.09.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 2,
-    "playerName": "Kalju",
-    "score": 2
+    "referee": "AVDO Rejdi",
+    "scale": 2,
+    "topic": "Category",
+    "subtopic": ""
   },
   {
     "date": "15.09.24",
     "team1": "Tammeka",
     "team2": "Patrikjevs",
     "image": 3,
-    "playerName": "Pedmanson",
-    "score": 3
+    "referee": "XHAJA Juxhin",
+    "scale": 3,
+    "season": "24",
+    "topic": "Category",
+    "subtopic": ""
   },
   {
     "date": "13.09.24",
     "team1": "Tammeka",
     "team2": "Pedmanson",
     "image": 1,
-    "playerName": "Ceesay",
-    "score": 4
+    "referee": "RUSTA Emanuela",
+    "scale": 4,
+    "topic": "Status",
+    "subtopic": ""
   },
   {
     "date": "01.09.24",
     "team1": "Paide",
     "team2": "Ceesay",
     "image": 4,
-    "playerName": "Kask",
-    "score": 5
+    "referee": "PJETRUSHAJ Eglantina",
+    "scale": 5,
+    "topic": "Category",
+    "subtopic": ""
   },
   {
     "date": "02.08.24",
     "team1": "Vaprus",
     "team2": "Kask",
     "image": 2,
-    "playerName": "Epton",
-    "score": 6
+    "referee": "LATA Florian",
+    "scale": 6,
+    "topic": "Status",
+    "subtopic": ""
   },
   {
     "date": "27.07.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 2,
-    "playerName": "Vaprus",
-    "score": 4
+    "referee": "JORGJI Enea",
+    "scale": 4,
+    "topic": "Status",
+    "subtopic": ""
   },
   {
     "date": "27.07.24",
     "team1": "Tammeka",
     "team2": "Epton",
     "image": 3,
-    "playerName": "Vaprus",
-    "score": 5
+    "referee": "HAMITI Eldorjan",
+    "scale": 5,
+    "topic": "Category",
+    "subtopic": "Studs directed high"
   }
 ]

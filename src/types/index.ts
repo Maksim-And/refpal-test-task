@@ -1,4 +1,4 @@
-type PlayersStatistic = {
+export type PlayerStatistic = {
   playerName: string;
   countShort: number;
   countDefault: number;
@@ -27,7 +27,7 @@ type Incident = {
   hk: number;
   ko: number;
   hasMessage: boolean;
-  playersStatistic: PlayersStatistic[];
+  playersStatistic: PlayerStatistic[];
 };
 
 export type IncidentTopic = {
@@ -36,11 +36,30 @@ export type IncidentTopic = {
   incidents: Incident[];
 };
 
-export type Images = {
+export type SimilarIncident = {
   date: string;
   team1: string;
   team2: string;
   image: number;
   playerName: string;
-  score: number;
+  scale: number;
+  season: string;
+  topic: string;
+  subtopic: string;
+  referee: string;
+};
+
+export type IFilters = {
+  team: string;
+  referee: string;
+  scale: string;
+  fromDate: string;
+  toDate: string;
+  sortBy: string;
+  sortOrder: string;
+  season: string;
+  topic: string;
+  subtopic: string;
+  decreasing: string;
+  byDate: string;
 };

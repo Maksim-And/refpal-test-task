@@ -1,22 +1,26 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { cn, setCardColor } from "../../lib/utils";
 import Card from "./Card";
 
 type SelectProps = {
+  name: string;
   options: string[];
   label: string;
   isScale?: boolean;
+  onChange?: (key: string, value: string) => void;
 };
 
-const Select = ({ options, label, isScale }: SelectProps) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-
-  const handleSelect = (option: string) => {
-    setSelectedOption(option);
-  };
+const Select = ({ name, options, label, isScale, onChange }: SelectProps) => {
+  const [selectedOption, setSelectedOption] = useState<string>();
 
   const handleClear = () => {
-    setSelectedOption(null);
+    onChange?.(name, "");
+    setSelectedOption("");
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    onChange?.(name, e.target.value);
+    setSelectedOption(e.target.value);
   };
 
   return (
@@ -51,7 +55,7 @@ const Select = ({ options, label, isScale }: SelectProps) => {
           </div>
         ) : (
           <select
-            onChange={(e) => handleSelect(e.target.value)}
+            onChange={handleChange}
             className="w-full h-[22px] bg-white text-black rounded-[2px] px-1 focus:outline-none appearance-none"
           >
             {options.map((option) => (

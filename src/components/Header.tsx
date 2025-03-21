@@ -7,6 +7,12 @@ import InfoIcon from "../assets/icons/InfoIcon";
 import StarIcon from "../assets/icons/StarIcon";
 import Card from "./ui/Card";
 
+const STARS = [
+  { id: 1, color: "#e09139" },
+  { id: 2, color: "#3a6f93" },
+  { id: 3, color: "#6d7b70" },
+];
+
 const Header = () => {
   return (
     <div className="flex flex-wrap md:flex-nowrap bg-green-600 p-3 mx-[1px]">
@@ -39,9 +45,9 @@ const Header = () => {
 
       <section className="flex items-center gap-1 sm:ml-auto">
         <InfoIcon className="mr-2" />
-        <StarIcon color="#e09139" />
-        <StarIcon color="#3a6f93" />
-        <StarIcon color="#6d7b70" />
+        {STARS.map(({ id, color }) => (
+          <StarIcon key={id} color={color} />
+        ))}
       </section>
     </div>
   );

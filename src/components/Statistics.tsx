@@ -1,37 +1,118 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import MinusIcon from "../assets/icons/MinusIcon";
 import PlusSquared from "../assets/icons/PlusSquared";
 import StarIcon from "../assets/icons/StarIcon";
 import Triangle from "../assets/icons/TriangleIcon";
-import { cn, setMarkColor } from "../lib/utils";
+import { cn, parseDate, setMarkColor } from "../lib/utils";
 import Button from "./ui/Button";
-import Checkbox from "./Checkbox";
+import Checkbox from "./ui/Checkbox";
 import IncidentCard from "./IncidentCard";
 import Input from "./ui/Input";
 import Marks from "./ui/Marks";
 import Filters from "./Filters";
 import VideoSection from "./VideoSection";
-
-type PlayerStatistic = {
-  playerName: string;
-  countShort: number;
-  countDefault: number;
-  description: string;
-  hasBackground: boolean;
-  isShort: boolean;
-  isNotAvailable: boolean;
-};
+import { useFetch } from "../hooks/useFetch";
+import { IFilters, SimilarIncident, PlayerStatistic } from "../types";
 
 type StatisticsProps = {
   playersStatistic: PlayerStatistic[] | undefined | null;
 };
 
 const Statistics = ({ playersStatistic }: StatisticsProps) => {
+  const { data, loading, error } = useFetch<SimilarIncident[] | undefined>(
+    "/similarIncidents.json",
+  );
+
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [details, setDetails] = useState<"short" | "default">("default");
   const handleToggleFilter = () => {
     setIsFilterOpen((prev) => !prev);
   };
+  const [filteredData, setFilteredData] = useState<SimilarIncident[] | null>(
+    null,
+  );
+  const [filters, setFilters] = useState<IFilters>({
+    team: "",
+    referee: "",
+    scale: "",
+    fromDate: "",
+    toDate: "",
+    sortBy: "",
+    sortOrder: "",
+    season: "",
+    topic: "",
+    subtopic: "",
+    decreasing: "",
+    byDate: "",
+  });
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilters((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const filterBy = useCallback(
+    (key: string, value: string) => {
+      if (!value) return () => true;
+      switch (key) {
+        case "team":
+          return (item: SimilarIncident) =>
+            item.team1.includes(value) || item.team2.includes(value);
+        case "referee":
+          return (item: SimilarIncident) => item.referee.includes(value);
+        case "scale":
+          return (item: SimilarIncident) => item.scale === Number(value);
+        case "season":
+          return (item: SimilarIncident) => item.season === value;
+        case "topic":
+          return (item: SimilarIncident) => item.topic === value;
+        case "subtopic":
+          return (item: SimilarIncident) => item.subtopic === value;
+        case "fromDate":
+        case "toDate":
+          return (item: SimilarIncident) => {
+            const date = parseDate(item.date);
+            const from = filters.fromDate && new Date(filters.fromDate);
+            const to = filters.toDate && new Date(filters.toDate);
+            return date >= from && date <= to;
+          };
+        default:
+          return () => true;
+      }
+    },
+    [filters],
+  );
+
+  const sortByDate = useCallback(
+    (a: SimilarIncident, b: SimilarIncident) => {
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+      const order = filters.sortOrder === "desc" ? -1 : 1;
+      return dateA.getTime() > dateB.getTime() ? order : -order;
+    },
+    [filters],
+  );
+
+  const applyFilters = useCallback(() => {
+    let result = [...(data || [])];
+
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) {
+        result = result.filter(filterBy(key, value));
+      }
+    });
+
+    if (filters.byDate === "byDate" || filters.decreasing === "decreasing") {
+      result = result.sort(sortByDate);
+    }
+
+    setFilteredData(result);
+  }, [data, filters, filterBy, sortByDate]);
+
+  useEffect(() => {
+    if (!data) return;
+
+    setFilteredData(data);
+  }, [data, filters]);
 
   return (
     <tr className="bg-green-125">
@@ -151,9 +232,13 @@ const Statistics = ({ playersStatistic }: StatisticsProps) => {
               filter / sort
             </button>
           </div>
-          <Filters isOpen={isFilterOpen} />
+          <Filters
+            isOpen={isFilterOpen}
+            onFilterChange={handleFilterChange}
+            applyFilters={applyFilters}
+          />
           <div className="w-full bg-white p-1">
-            <VideoSection />
+            <VideoSection data={filteredData} error={error} loading={loading} />
           </div>
         </section>
       </td>

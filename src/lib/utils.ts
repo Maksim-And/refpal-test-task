@@ -29,3 +29,9 @@ export const setMarkColor = (value: number | undefined) => {
 
   return colors[value || 1] || "bg-white";
 };
+
+export const parseDate = (dateStr: string) => {
+  const [day, month, year] = dateStr.split(".");
+  const fullYear = year.length === 2 ? `20${year}` : year;
+  return new Date(`${fullYear}-${month}-${day}`);
+};

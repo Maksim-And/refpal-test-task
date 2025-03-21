@@ -5,8 +5,9 @@ type ButtonProps = {
   label: string;
   hasIcon?: boolean;
   className?: string;
+  onClick?: () => void;
 };
-const Button = ({ label, hasIcon, className }: ButtonProps) => {
+const Button = ({ label, hasIcon, className, onClick }: ButtonProps) => {
   return (
     <div
       className={cn(
@@ -14,7 +15,9 @@ const Button = ({ label, hasIcon, className }: ButtonProps) => {
         className,
       )}
     >
-      <button className="cursor-pointer mb-[1px]">{label}</button>
+      <button onClick={onClick} className="cursor-pointer mb-[1px]">
+        {label}
+      </button>
       {hasIcon && <ArrowRightIcon />}
     </div>
   );

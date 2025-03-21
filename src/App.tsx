@@ -1,13 +1,13 @@
-import Container from "./components/Container";
-import Header from "./components/Header";
-import IncidentTable from "./components/IncidentTable";
-import Error from "./components/ui/Error";
-import Spinner from "./components/ui/Spinner";
+import Container from "./components/Container/Container";
+import Header from "./components/Header/Header";
+import IncidentTable from "./components/IncidentTable/IncidentTable";
+import Error from "./components/ui/Error/Error";
+import Spinner from "./components/ui/Spinner/Spinner";
 import { useFetch } from "./hooks/useFetch";
 import { IncidentTopic } from "./types";
 
 function App() {
-  const { data, loading, error } = useFetch<IncidentTopic[]>(
+  const { data, isLoading, error } = useFetch<IncidentTopic[] | undefined>(
     "/incidentTopic.json",
   );
 
@@ -18,7 +18,7 @@ function App() {
   return (
     <section className="flex justify-center w-full bg-gradient-to-r from-gray-500/20 to-gray-800/20 min-h-screen p-2">
       <Container>
-        {loading ? (
+        {isLoading ? (
           <div className="flex w-full justify-center items-center h-60">
             <Spinner />
           </div>

@@ -1,4 +1,4 @@
-export type PlayerStatistic = {
+export interface PlayerStatistic {
   playerName: string;
   countShort: number;
   countDefault: number;
@@ -6,9 +6,9 @@ export type PlayerStatistic = {
   hasBackground: boolean;
   isShort: boolean;
   isNotAvailable: boolean;
-};
+}
 
-type Incident = {
+interface Incident {
   id: number;
   minute: number;
   time: string;
@@ -19,7 +19,7 @@ type Incident = {
     team: string;
     image: boolean;
   };
-  decision: string;
+  decision: RefereeIconType;
   officialMark: number;
   myMark: null;
   communityMark: number;
@@ -28,15 +28,15 @@ type Incident = {
   ko: number;
   hasMessage: boolean;
   playersStatistic: PlayerStatistic[];
-};
+}
 
-export type IncidentTopic = {
+export interface IncidentTopic {
   id: number;
   topic: string;
   incidents: Incident[];
-};
+}
 
-export type SimilarIncident = {
+export interface SimilarIncident {
   date: string;
   team1: string;
   team2: string;
@@ -47,9 +47,9 @@ export type SimilarIncident = {
   topic: string;
   subtopic: string;
   referee: string;
-};
+}
 
-export type IFilters = {
+export interface IFilters {
   team: string;
   referee: string;
   scale: string;
@@ -62,4 +62,28 @@ export type IFilters = {
   subtopic: string;
   decreasing: string;
   byDate: string;
-};
+}
+
+export enum FilterValues {
+  Team = "team",
+  Referee = "referee",
+  Scale = "scale",
+  FromDate = "fromDate",
+  ToDate = "toDate",
+  SortBy = "sortBy",
+  SortOrder = "sortOrder",
+  Season = "season",
+  Topic = "topic",
+  Subtopic = "subtopic",
+  Decreasing = "decreasing",
+  ByDate = "byDate",
+  Desc = "desc",
+  Asc = "asc",
+}
+
+export enum RefereeIconType {
+  YellowCard = "yellow-card",
+  Replay = "replay",
+  Whistle = "whistle",
+  Flag = "flag",
+}

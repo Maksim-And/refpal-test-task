@@ -1,32 +1,16 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 export const useFetch = <T>(url: string, delay = 1000) => {
-  const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  return useQuery<T>({
+    queryKey: [url],
+    queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      const response = await fetch(url);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        await new Promise((resolve) => setTimeout(resolve, delay));
-
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Error load data");
-        }
-
-        const json = await response.json();
-        setData(json);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown Error");
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error("Error loading data");
       }
-    };
-
-    fetchData();
-  }, [url, delay]);
-
-  return { data, loading, error };
+      return response.json();
+    },
+  });
 };

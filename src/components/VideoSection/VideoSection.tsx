@@ -1,33 +1,19 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { cn, setCardColor } from "../lib/utils";
-import { SimilarIncident } from "../types";
-import Card from "./ui/Card";
-import Pagination from "./ui/Pagination";
-import Spinner from "./ui/Spinner";
-import Error from "./ui/Error";
+import PlayIcon from "../../assets/icons/PlayIcon";
+import { IMAGE_PER_PAGE, IMAGES } from "../../constants";
+import { cn, setCardColor } from "../../lib/utils";
+import { SimilarIncident } from "../../types";
+import Card from "../ui/Card/Card";
+import Error from "../ui/Error/Error";
+import Pagination from "../ui/Pagination/Pagination";
+import Spinner from "../ui/Spinner/Spinner";
 
-import image1 from "../assets/images/screen-1.jpg";
-import image2 from "../assets/images/screen-2.jpg";
-import image3 from "../assets/images/screen-3.jpg";
-import image4 from "../assets/images/screen-4.jpg";
-import image5 from "../assets/images/screen-5.jpg";
-
-const pictures: Record<number, string> = {
-  1: image1,
-  2: image2,
-  3: image3,
-  4: image4,
-  5: image5,
-};
-
-const IMAGE_PER_PAGE = 7;
-
-type VideoSectionProps = {
+interface VideoSectionProps {
   data: SimilarIncident[] | null;
   loading: boolean;
-  error: string | null;
-};
+  error: Error | null;
+}
 
 const VideoSection = ({ data, loading, error }: VideoSectionProps) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -75,12 +61,17 @@ const VideoSection = ({ data, loading, error }: VideoSectionProps) => {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
-                      <img
-                        src={pictures[img.image]}
-                        alt={`${img.team1} vs ${img.team2}`}
-                        className="w-full h-auto border"
-                        loading="lazy"
-                      />
+                      <div className="relative group">
+                        <img
+                          src={IMAGES[img.image]}
+                          alt={`${img.team1} vs ${img.team2}`}
+                          className="w-full h-auto border"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <PlayIcon opacity={1} width={40} height={40} />
+                        </div>
+                      </div>
                       <div className="mt-2 flex justify-between gap-x-1">
                         <div>
                           <span className="font-bold">{img.date}&nbsp;</span>

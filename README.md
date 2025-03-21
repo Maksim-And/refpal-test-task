@@ -34,11 +34,13 @@ A test task for Refpal, built with React, TypeScript, Vite and Tailwind.
 
 ```
 /src
-  ├── components/    # UI components
-  ├── hooks/         # Custom hooks
   ├── assets/        # Styles, images
+  ├── components/    # UI components
+  ├── constants/     # Constants
+  ├── hooks/         # Custom hooks
   ├── lib/           # Helper functions
   ├── types/         # Typescript types
   ├── App.tsx        # Root component
+  ├── index.css      # Root styles
   ├── main.tsx       # Entry point
 ```

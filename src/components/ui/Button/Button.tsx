@@ -1,12 +1,13 @@
-import ArrowRightIcon from "../../assets/icons/ArrowRightIcon";
-import { cn } from "../../lib/utils";
+import ArrowRightIcon from "../../../assets/icons/ArrowRightIcon";
+import { cn } from "../../../lib/utils";
 
-type ButtonProps = {
+interface ButtonProps {
   label: string;
   hasIcon?: boolean;
   className?: string;
   onClick?: () => void;
-};
+}
+
 const Button = ({ label, hasIcon, className, onClick }: ButtonProps) => {
   return (
     <div

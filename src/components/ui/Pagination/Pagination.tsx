@@ -1,10 +1,10 @@
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
-type PaginationProps = {
+interface PaginationProps {
   totalPages: number;
   currentPage: number;
   onClick: (page: number) => void;
-};
+}
 
 const Pagination = ({ totalPages, currentPage, onClick }: PaginationProps) => {
   return (

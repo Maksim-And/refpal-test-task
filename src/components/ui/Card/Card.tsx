@@ -1,14 +1,14 @@
-import ArrowDownIcon from "../../assets/icons/ArrowDownIcon";
-import MessageIcon from "../../assets/icons/MessageIcon";
-import { cn } from "../../lib/utils";
+import ArrowDownIcon from "../../../assets/icons/ArrowDownIcon";
+import MessageIcon from "../../../assets/icons/MessageIcon";
+import { cn } from "../../../lib/utils";
 
-type CardProps = {
+interface CardProps {
   children: React.ReactNode;
   iconPosition?: "bottom";
   className?: string;
   border?: boolean;
   hasMessage?: boolean;
-};
+}
 const Card = ({
   children,
   iconPosition,

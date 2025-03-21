@@ -1,8 +1,12 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import Marks from "./ui/Marks";
-import Card from "./ui/Card";
+import Marks from "../Marks/Marks";
+import Card from "../Card/Card";
 
-export const CustomTooltip = ({ mark }: { mark: number }) => {
+interface CustomTooltipProps {
+  mark: number;
+}
+
+export const CustomTooltip = ({ mark }: CustomTooltipProps) => {
   return (
     <Tooltip.Provider delayDuration={200}>
       <Tooltip.Root>

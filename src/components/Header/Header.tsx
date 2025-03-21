@@ -1,17 +1,11 @@
-import PlayIcon from "../assets/icons/PlayIcon";
-import TeamCard from "./TeamCard";
-
-import transImage from "../assets/images/trans.png";
-import kuressaareImage from "../assets/images/kuressaare.png";
-import InfoIcon from "../assets/icons/InfoIcon";
-import StarIcon from "../assets/icons/StarIcon";
-import Card from "./ui/Card";
-
-const STARS = [
-  { id: 1, color: "#e09139" },
-  { id: 2, color: "#3a6f93" },
-  { id: 3, color: "#6d7b70" },
-];
+import InfoIcon from "../../assets/icons/InfoIcon";
+import PlayIcon from "../../assets/icons/PlayIcon";
+import StarIcon from "../../assets/icons/StarIcon";
+import kuressaareImage from "../../assets/images/kuressaare.png";
+import transImage from "../../assets/images/trans.png";
+import { STARS } from "../../constants";
+import Card from "../ui/Card/Card";
+import TeamCard from "../ui/TeamCard/TeamCard";
 
 const Header = () => {
   return (

@@ -1,11 +1,11 @@
-import { cn } from "../lib/utils";
+import { cn } from "../../../lib/utils";
 
-type TeamCardProps = {
+interface TeamCardProps {
   image: string;
   teamName: string;
   textPosition: "left" | "right";
   className?: string;
-};
+}
 
 const TeamCard = ({
   textPosition,

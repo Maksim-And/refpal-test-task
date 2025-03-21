@@ -1,12 +1,12 @@
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 
-type InputProps = {
+interface InputProps {
   name?: string;
   hasBorder?: boolean;
   label?: string;
   className?: string;
   onChange?: (key: string, value: string) => void;
-};
+}
 
 const Input = ({ name, label, hasBorder, className, onChange }: InputProps) => {
   return (

@@ -1,10 +1,10 @@
-import Triangle from "../../assets/icons/TriangleIcon";
-import { cn, setCardColor } from "../../lib/utils";
+import Triangle from "../../../assets/icons/TriangleIcon";
+import { cn, setCardColor } from "../../../lib/utils";
 
-type MarksProps = {
+interface MarksProps {
   hasMarker?: boolean;
   marksCount: number;
-};
+}
 
 const Marks = ({ hasMarker, marksCount }: MarksProps) => {
   return (

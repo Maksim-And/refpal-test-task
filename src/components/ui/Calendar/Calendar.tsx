@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import CalendarIcon from "../../assets/icons/CalendarIcon";
+import CalendarIcon from "../../../assets/icons/CalendarIcon";
 
-type CalendarProps = {
+interface CalendarProps {
   name: string;
   onChange: (name: string, value: string) => void;
-};
+}
 
 const Calendar = ({ name, onChange }: CalendarProps) => {
   const dateRef = useRef<HTMLInputElement>(null);

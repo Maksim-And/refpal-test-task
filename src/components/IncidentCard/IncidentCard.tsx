@@ -1,9 +1,9 @@
-import ArrowLeftIcon from "../assets/icons/ArrowLeftIcon";
-import WhistleIcon from "../assets/icons/WhistleIcon";
-import { cn, setCardColor, setMarkColor } from "../lib/utils";
-import Card from "./ui/Card";
+import ArrowLeftIcon from "../../assets/icons/ArrowLeftIcon";
+import WhistleIcon from "../../assets/icons/WhistleIcon";
+import { cn, setCardColor, setMarkColor } from "../../lib/utils";
+import Card from "../ui/Card/Card";
 
-type IncidentCardProps = {
+interface IncidentCardProps {
   playerName: string;
   details: "short" | "default";
   countShort?: number;
@@ -11,7 +11,7 @@ type IncidentCardProps = {
   description?: string;
   hasBackground?: boolean;
   isNotAvailable?: boolean;
-};
+}
 
 const IncidentCard = ({
   playerName,

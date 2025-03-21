@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import PlayIcon from "../assets/icons/PlayIcon";
-import PlusCicledIcon from "../assets/icons/PlusCicledIcon";
-import { cn, setCardColor } from "../lib/utils";
-import { IncidentTopic } from "../types";
-import { CustomTooltip } from "./CustomTooltip";
-import RefereeDecisionIcons from "./RefereeDecisionIcons";
-import Statistics from "./Statistics";
-import TeamCard from "./TeamCard";
-import Card from "./ui/Card";
+import PlayIcon from "../../assets/icons/PlayIcon";
+import PlusCicledIcon from "../../assets/icons/PlusCicledIcon";
+import { cn, setCardColor } from "../../lib/utils";
+import { IncidentTopic } from "../../types";
+import kuressaareImage from "../../assets/images/kuressaare.png";
+import transImage from "../../assets/images/trans.png";
+import RefereeDecisionIcons from "../RefereeDecisionIcons/RefereeDecisionIcons";
+import Statistics from "../Statistics/Statistics";
+import Card from "../ui/Card/Card";
+import { CustomTooltip } from "../ui/CustomTooltip/CustomTooltip";
+import TeamCard from "../ui/TeamCard/TeamCard";
 
-import kuressaareImage from "../assets/images/kuressaare.png";
-import transImage from "../assets/images/trans.png";
-
-type IcidentTableProps = {
-  data: IncidentTopic[] | null;
-};
+interface IcidentTableProps {
+  data: IncidentTopic[] | undefined;
+}
 
 const IncidentTable = ({ data }: IcidentTableProps) => {
   const [expandedIncidentId, setExpandedIncidentId] = useState<number | null>(
@@ -30,7 +29,7 @@ const IncidentTable = ({ data }: IcidentTableProps) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full border-collapse border-x border-green-25">
-        <thead className="text-left text-white leading-3">
+        <thead className="text-left text-white leading-3 max-h-8">
           <tr className="bg-green-500 font-normal">
             <th className="p-1 w-[5%] ">Minute</th>
             <th className="p-1 w-[5%]">Time</th>

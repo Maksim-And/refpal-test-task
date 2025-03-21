@@ -1,14 +1,14 @@
 import { ChangeEvent, useState } from "react";
-import { cn, setCardColor } from "../../lib/utils";
-import Card from "./Card";
+import { cn, setCardColor } from "../../../lib/utils";
+import Card from "../Card/Card";
 
-type SelectProps = {
+interface SelectProps {
   name: string;
   options: string[];
   label: string;
   isScale?: boolean;
   onChange?: (key: string, value: string) => void;
-};
+}
 
 const Select = ({ name, options, label, isScale, onChange }: SelectProps) => {
   const [selectedOption, setSelectedOption] = useState<string>();
